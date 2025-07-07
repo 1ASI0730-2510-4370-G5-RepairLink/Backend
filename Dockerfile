@@ -1,32 +1,21 @@
-﻿# Usar una imagen base de .NET SDK
+# Etapa de construcción
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+WORKDIR /src
 
-# Establecer el directorio de trabajo
-WORKDIR /app
+# Copiar todo el contenido del proyecto
+COPY ./RepairLink-Backend/ ./RepairLink-Backend/
 
-# Copiar los archivos de proyecto
-COPY *.csproj ./
+# Ir al directorio del proyecto
+WORKDIR /src/RepairLink-Backend
 
-# Restaurar las dependencias
+# Restaurar dependencias
 RUN dotnet restore
 
-# Copiar todo el código al contenedor
-COPY . ./
+# Compilar el proyecto
+RUN dotnet publish -c Release -o /app/publish
 
-# Publicar la aplicación en modo Release
-RUN dotnet publish -c Release -o out
-
-# Usar una imagen base de .NET Runtime para ejecutar la aplicación
+# Imagen final
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS final
-
-# Establecer el directorio de trabajo
 WORKDIR /app
-
-# Copiar los archivos publicados desde la fase de build
-COPY --from=build /app/out .
-
-# Exponer el puerto que la aplicación usará
-EXPOSE 80
-
-# Comando para iniciar la aplicación
+COPY --from=build /app/publish .
 ENTRYPOINT ["dotnet", "RepairLink-Backend.dll"]
