@@ -60,7 +60,7 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddDbContext<AppDbContext>(
         options =>
         {
-            options.UseMySQL(connectionString)
+            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
                 .LogTo(Console.WriteLine, LogLevel.Information)
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors();
@@ -70,7 +70,7 @@ else if (builder.Environment.IsProduction())
     builder.Services.AddDbContext<AppDbContext>(
         options =>
         {
-            options.UseMySQL(connectionString)
+            options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
                 .LogTo(Console.WriteLine, LogLevel.Error)
                 .EnableDetailedErrors();
         }
