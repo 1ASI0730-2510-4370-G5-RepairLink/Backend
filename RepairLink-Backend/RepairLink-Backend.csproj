@@ -11,12 +11,11 @@
         <PackageReference Include="EntityFrameworkCore.CreatedUpdatedDate" Version="8.0.0" />
         <PackageReference Include="Humanizer" Version="3.0.0-beta.96" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.5"/>
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.5" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.5" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />
-        <PackageReference Include="MySql.EntityFrameworkCore" Version="9.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.11" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.11" />
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="8.1.4" />
-        <PackageReference Include="Swashbukle.AspNetCore" Version="2.0.0" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="2.0.0" />
     </ItemGroup>
 
 </Project>
